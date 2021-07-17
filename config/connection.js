@@ -1,5 +1,5 @@
 require('dotenv').config();
-// TO-DO: setup dotenv
+// .env file is ignored and contains the login creds
 
 const Sequelize = require('sequelize');
 

@@ -10,19 +10,19 @@ class Product extends Model {}
 Product.init(
   {
     product: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
 
     product_name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
 
     price: {
-      type: Sequelize.DECIMAL,
+      type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
         isDecimal: true // Validates that the value is a decimal
@@ -30,7 +30,7 @@ Product.init(
     },
 
     stock: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 10, // Sets the default value to 10
       validate: { 
@@ -39,7 +39,7 @@ Product.init(
     },
 
     category_id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       references: {
         model: 'Category', // This is a reference to another model
         key: 'id' // This is the column name of the referenced model

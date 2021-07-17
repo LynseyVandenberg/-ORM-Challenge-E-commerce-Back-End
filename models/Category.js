@@ -4,7 +4,7 @@ const { Model, DataTypes } = require('sequelize');
 // Require the connection to the database (connection.js)
 const sequelize = require('../config/connection.js');
 
-// Create a "Category" model - https://sequelize.org/v5/manual/models-definition.html
+// Create a "Category" model - https://sequelize.org/v5/manual/models-definition.html !!!
 class Category extends Model {}
 
 Category.init(

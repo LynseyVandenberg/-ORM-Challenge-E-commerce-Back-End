@@ -2,35 +2,66 @@ const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
-
-// get all products
+/////////////////////////////////////////////////////////////////////////////////
+// findAll products
 router.get('/', (req, res) => {
-  Product.findAll {
-
-  }
-  // find all products
-  // be sure to include its associated Category and Tag data
+  Product.findAll({
+    attributes: ["id", "product_name", "price", "stock", "category_id"],
+    include: [
+      {
+        model: Category,
+        attributes: ['id', 'category_name'] // includes category row data
+      },
+      {
+        model: Tag,
+        attributes: ['id', 'tag_name'] // includes tag row data
+      }]
+  }).then(catDat => res.json(catDat))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
-// get one product
+/////////////////////////////////////////////////////////////////////////////////
+// findOne product by it's id
 router.get('/:id', (req, res) => {
-  Product.findOne
-  // find a single product by its `id`
-  // be sure to include its associated Category and Tag data
+  Product.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: Category,
+        attributes: ['id', 'category_name'] // includes category row data
+      },
+      {
+        model: Tag,
+        attributes: ['id', 'tag_name'] // includes tag row data
+      }]
+  }).then(catDat => {
+    if (!catDat) {
+      res.status(404).json({ message: 'No products associated with this ID!'}); 
+      return; 
+    }
+    res.json(catDat);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
-// create new product
+/////////////////////////////////////////////////////////////////////////////////
+// create new product (product_name, price, stock, category_id.. added tag_id because it's referenced below)
 router.post('/', (req, res) => {
-  /* req.body should look like this...
-    {
-      product_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      tagIds: [1, 2, 3, 4]
-    }
-  */
-  Product.create(req.body)
-    .then((product) => {
+  Product.create ({
+    product_name: req.body.product_name,
+    price: req.body.price,
+    stock: req.body.stock,
+    category_id: req.body.category_id,
+    tag_id: req.body.tag_id
+  }).then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
@@ -51,6 +82,7 @@ router.post('/', (req, res) => {
     });
 });
 
+/////////////////////////////////////////////////////////////////////////////////
 // update product
 router.put('/:id', (req, res) => {
   // update product data
@@ -58,12 +90,10 @@ router.put('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-  })
-    .then((product) => {
+  }).then((product) => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
-    })
-    .then((productTags) => {
+    }).then((productTags) => {
       // get list of current tag_ids
       const productTagIds = productTags.map(({ tag_id }) => tag_id);
       // create filtered list of new tag_ids
@@ -92,9 +122,24 @@ router.put('/:id', (req, res) => {
       res.status(400).json(err);
     });
 });
-
+/////////////////////////////////////////////////////////////////////////////////
+// delete products by ID
 router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
+  Product.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(catDat => {
+    if (!catDat) {
+      res.status(404).json({ message: "No products associated with this ID!" });
+      return;
+    }
+    res.json(catDat);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 module.exports = router;

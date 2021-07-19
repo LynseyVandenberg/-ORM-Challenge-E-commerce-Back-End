@@ -18,7 +18,7 @@ Because this application is not deployed, I have created a walk through demo of 
 * WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
 * THEN I am able to successfully create, update, and delete data in my database
 
-![Insomnia_Screenshot](https://user-images.githubusercontent.com/81693557/126208812-fc945516-e4bb-4d12-8f67-a7ed6c597b9b.JPG)
+![Insomnia_Screenshot](https://github.com/LynseyVandenberg/ORM-Challenge-E-commerce-Back-End/blob/9945af6691058736fd9e03a1195eaafa670f06ff/media/ORM_DEMO_GIF.gif)
 
 # Demo
 ![Insomnia_Demo-(media/ORM_DEMO.mp4)

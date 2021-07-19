@@ -18,10 +18,10 @@ Because this application is not deployed, I have created a walk through demo of 
 * WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
 * THEN I am able to successfully create, update, and delete data in my database
 
-![Insomnia_Screenshot](https://github.com/LynseyVandenberg/ORM-Challenge-E-commerce-Back-End/blob/9945af6691058736fd9e03a1195eaafa670f06ff/media/ORM_DEMO_GIF.gif)
-
-
 # Demo
+
+![Insomnia_Demo](https://github.com/LynseyVandenberg/ORM-Challenge-E-commerce-Back-End/blob/9945af6691058736fd9e03a1195eaafa670f06ff/media/ORM_DEMO_GIF.gif)
+
 _In this video I performed the following steps:_
 1. Logged into MySQL from a command prompt within VS Code. Ran "source db/schema.sql" to create the ecommerce_db database. Executed the "show databases;" command to show the database was created, then exited MySQL.
 2. From the bash terminal, I ran an "npm run seed" command to seed the database. I then started the database by running an "npm start".

@@ -29,4 +29,5 @@ _In this video I performed the following steps:_
 4. Ran through the Category, Product, and Tag 'CREATE', 'UPDATE', and 'DELETE' requests using Insomia Dashboard. 
 _NOTE: I am currently unable to update Categories and Tags by ID. I am able to CREATE nd UPDATE Products, but the error handling isn't fully functional. I will continue to work on this and update my repo when these items are resolved._
 
-![ORM Demo](https://github.com/LynseyVandenberg/ORM-Challenge-E-commerce-Back-End/blob/d4a1b25bc3d687a51dfdbe62e38158b3e9f3bf83/media/ORM_DEMO.mp4)
+[ORM Demo](https://github.com/LynseyVandenberg/ORM-Challenge-E-commerce-Back-End/blob/d4a1b25bc3d687a51dfdbe62e38158b3e9f3bf83/media/ORM_DEMO.mp4)
+[ORM Demo GIF](https://github.com/LynseyVandenberg/ORM-Challenge-E-commerce-Back-End/blob/97f38f7796bcb6e7437c56e6a9078ebe85924d81/media/ORM_DEMO_GIF.gif)

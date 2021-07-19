@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
         model: Tag,
         attributes: ['id', 'tag_name'] // includes tag row data
       }]
-  }).then(catDat => res.json(catDat))
+  }).then(proDat => res.json(proDat))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -39,12 +39,12 @@ router.get('/:id', (req, res) => {
         model: Tag,
         attributes: ['id', 'tag_name'] // includes tag row data
       }]
-  }).then(catDat => {
-    if (!catDat) {
+  }).then(proDat => {
+    if (!proDat) {
       res.status(404).json({ message: 'No products associated with this ID!'}); 
       return; 
     }
-    res.json(catDat);
+    res.json(proDat);
   })
   .catch(err => {
     console.log(err);
@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
     price: req.body.price,
     stock: req.body.stock,
     category_id: req.body.category_id,
-    tag_id: req.body.tag_id
+    // tag_id: req.body.tag_id
   }).then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
@@ -129,12 +129,12 @@ router.delete('/:id', (req, res) => {
     where: {
       id: req.params.id
     }
-  }).then(catDat => {
-    if (!catDat) {
+  }).then(proDat => {
+    if (!proDat) {
       res.status(404).json({ message: "No products associated with this ID!" });
       return;
     }
-    res.json(catDat);
+    res.json(proDat);
   })
   .catch(err => {
     console.log(err);

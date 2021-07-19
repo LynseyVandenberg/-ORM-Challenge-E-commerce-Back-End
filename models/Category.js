@@ -10,7 +10,7 @@ class Category extends Model {}
 Category.init(
   {
     id: {
-      type: DataTypes.INTEGER, //I also saw sequelize.INTEGER as a syntax example
+      type: DataTypes.INTEGER, 
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,

@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         model: Product,
         attributes: ['product_name', 'stock', 'price', 'category_id']
       },
-  }).then(catDat => res.json(catDat))
+  }).then(tagDat => res.json(tagDat))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -31,12 +31,12 @@ router.get('/:id', (req, res) => {
         model: Product,
         attributes: ['product_name', 'price', 'stock', 'category_id'] 
       }
-  }).then(catDat => {
-    if (!catDat) {
+  }).then(tagDat => {
+    if (!tagDat) {
       res.status(404).json({ message: 'No tag associated with this ID!'}); 
       return; 
     }
-    res.json(catDat);
+    res.json(tagDat);
   })
   .catch(err => {
     console.log(err);
@@ -49,7 +49,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   Tag.create({
     tag_name: req.body.tag_name,
-  }).then(catDat => { res.json(catDat)
+  }).then(tagDat => { res.json(tagDat)
     .catch(err => { res.status(500).json(err);
     });
 });
@@ -59,18 +59,18 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
   Tag.update(
       {
-        tag_name: req.body.tag_name
+        id: req.params.id
       },
       {
         where: {
           id: req.params.id
         },
-      }).then((catDat) => {
-        if (!catDat) {
+      }).then((tagDat) => {
+        if (!tagDat) {
           res.status(404).json({ message: 'No tag associated with this ID!'}); 
           return; 
         }
-        res.json(catDat);
+        res.json(tagDat);
       })
       .catch(err => {
         console.log(err);
@@ -85,12 +85,12 @@ router.delete('/:id', (req, res) => {
     where: {
       id: req.params.id
     }
-  }).then(catDat => {
-    if (!catDat) {
+  }).then(tagDat => {
+    if (!tagDat) {
       res.status(404).json({ message: "No tag associated with this ID!" });
       return;
     }
-    res.json(catDat);
+    res.json(tagDat);
   })
   .catch(err => {
     console.log(err);

@@ -18,6 +18,8 @@ Because this application is not deployed, I have created a walk through demo of 
 * WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
 * THEN I am able to successfully create, update, and delete data in my database
 
+![Insomnia_Screenshot](https://user-images.githubusercontent.com/81693557/126208812-fc945516-e4bb-4d12-8f67-a7ed6c597b9b.JPG)
+
 # Demo
 _In this video I performed the following steps:_
 1. Logged into MySQL from a command prompt within VS Code. Ran "source db/schema.sql" to create the ecommerce_db database. Executed the "show databases;" command to show the database was created, then exited MySQL.

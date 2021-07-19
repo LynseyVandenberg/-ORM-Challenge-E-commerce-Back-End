@@ -9,7 +9,7 @@ class Product extends Model {}
 // set up fields and rules for "Product" model - https://sequelize.org/v5/manual/data-types.html & https://sequelize.org/v5/manual/models-definition.html !!!
 Product.init(
   {
-    product: {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -22,7 +22,7 @@ Product.init(
     },
 
     price: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10,2),
       allowNull: false,
       validate: {
         isDecimal: true // Validates that the value is a decimal
@@ -41,7 +41,7 @@ Product.init(
     category_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'Category', // This is a reference to another model
+        model: 'category', // This is a reference to another model
         key: 'id' // This is the column name of the referenced model
       }
     }

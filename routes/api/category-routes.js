@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   Category.findAll({
     include: {    
         model: Product,
-        attributes: ['product_name']
+        attributes: ['product_name', 'price', 'stock', 'category_id']
       }
   }).then(catDat => res.json(catDat))
   .catch(err => {
@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
     },
     include: {
       model: Product,
-      attributes: ['category_id']
+      attributes: ['product_name', 'price', 'stock', 'category_id']
     }
   }).then(catDat => res.json(catDat))
   .catch(err => {
@@ -59,16 +59,19 @@ router.put('/:id', (req, res) => {
         cateory_name: req.body.category_name
       },
       {
-        where: {
-          id: req.params.id
-        },
-      }).then((catDat) => {
-        if (!catDat) return res.status(404).json({message: "No category associated with this ID!"}) //trying different syntax with return
+        where: {id: req.params.id
       },
-      res.json(catDat));
-      }).catch((err) => {console.log(err);
-        res.status(500).json(err);
-    });
+        }).then(catDat => {
+    if (!catDat) {
+      res.status(404).json({ message: "No category associated with this ID!" });
+      return;
+    }
+    res.json(catDat);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // delete a category by its `id` value
@@ -89,6 +92,6 @@ router.delete('/:id', (req, res) => {
     res.status(500).json(err);
   });
 });
-
+});
 
 module.exports = router;

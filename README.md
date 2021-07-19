@@ -5,6 +5,8 @@ This is a backend database for a mock ecommerce site that utilizes [MySQL]("http
 
 Because this application is not deployed, I have created a walk through demo of the database functionality using [Insomnia]("https://support.insomnia.rest/"). 
 
+![Insomnia_Screenshot](https://github.com/LynseyVandenberg/ORM-Challenge-E-commerce-Back-End/blob/b534499771bfec6d63fc8d091fbc71d88323e8e3/media/Insomnia_Screenshot.JPG)
+
 ## Acceptance Criteria
 * GIVEN a functional Express.js API
 * WHEN I add my database name, MySQL username, and MySQL password to an environment variable file
